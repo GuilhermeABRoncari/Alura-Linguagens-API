@@ -6,9 +6,12 @@ import br.com.alura.libguagendsapi.domain.exceptions.CadastroInvalidoException;
 import br.com.alura.libguagendsapi.domain.exceptions.LinguagemNaoEncontradaException;
 import br.com.alura.libguagendsapi.domain.repository.LinguagemRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 @Service
@@ -27,7 +30,7 @@ public class LinguagemService {
         } throw new CadastroInvalidoException("Cadastro invalido");
     }
     public List<Linguagem> listar() {
-        return linguagemRepository.findAll();
+        return linguagemRepository.findAll(Sort.by(Sort.Direction.ASC, "ranking"));
     }
 
     public Linguagem encontrar(String id) {

@@ -34,7 +34,7 @@ public class LinguagemController {
     }
 
     //no RequestBody não coloquei a @Valid para que os atributos possam vir nulos nessa requisição
-    // e fazer o metodo atualizar funcionar corretamente.
+    // e fazer o metodo atualizar funcione corretamente.
     @PutMapping("{id}")
     public Linguagem atualizar(@PathVariable String id, @RequestBody LinguagemDTO linguagemDTO) {
         return linguagemService.atualizar(id, linguagemDTO);
